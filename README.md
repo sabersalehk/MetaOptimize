@@ -6,7 +6,11 @@ MetaOptimize is a framework that can wrap around any first-order optimization al
 
 Three folders contain codes for the experiments on CIFAR10, ImageNet, and TinyStories datasets. The main file to run the code is main.py in each folder. As an example, to run a (base, meta) = (AdamW, Lion) combination, the following command can be used:
 
-python3 train.py --optimizer HF --alg-base Adam --weight-decay-base .1 --normalizer-param-base .999 --momentum-param-base .9 --Lion-beta2-base -1 --alg-meta Lion --meta-stepsize 1e-3 --alpha0 1e-6 --stepsize-groups scalar --weight-decay-meta 0 --normalizer-param-meta -1 --momentum-param-meta .99 --Lion-beta2-meta .9 --seed 0 --gamma 1 --run-name 1 --save-directory outputs --max-time 00:05:00
+python3 train.py --optimizer HF --alg-base AdamW --weight-decay-base .1 --normalizer-param-base .999 --momentum-param-base .9 --Lion-beta2-base -1 --alg-meta Lion --meta-stepsize 1e-3 --alpha0 1e-6 --stepsize-groups scalar --weight-decay-meta 0 --normalizer-param-meta -1 --momentum-param-meta .99 --Lion-beta2-meta .9 --seed 0 --gamma 1 --run-name 1 --save-directory outputs --max-time 00:05:00
+
+If you want to run the code with the default configuration, use the following command:
+python3 train.py
+
 
 The set of arguments are:
 * optimizer: currently HF or AdamW (only in ImageNet or TinyStories dataset)
