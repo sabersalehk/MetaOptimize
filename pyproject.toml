@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "A framework that can wrap around any first-order optimization algorithm, tuning step sizes on the fly!"
 authors = [{ name="Saber Salehkaleybar", email="s.salehkaleybar@liacs.leidenuniv.nl" }]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 dependencies = ["torch"]
 
 [build-system]
