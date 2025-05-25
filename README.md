@@ -14,9 +14,7 @@ This repository contains an implementation of the MetaOptimize of the following 
   url={https://arxiv.org/pdf/2402.02342},
   year={2025}
 }
-
-
-
+```
 
 # Usage
 
