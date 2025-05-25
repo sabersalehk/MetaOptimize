@@ -4,8 +4,9 @@ MetaOptimize is a framework that can wrap around any first-order optimization al
 
 # Citation
 
-This repository contains an implementation of the MetaOptimize of the following paper.
+This repository contains an implementation of the MetaOptimize of the following paper:
 
+```bibtex
 @article{sharifnassab2024metaoptimize,
   title={Metaoptimize: A framework for optimizing step sizes and other meta-parameters},
   author={Sharifnassab, Arsalan and Salehkaleybar, Saber and Sutton, Richard},
@@ -13,6 +14,7 @@ This repository contains an implementation of the MetaOptimize of the following 
   url={https://arxiv.org/pdf/2402.02342},
   year={2025}
 }
+
 
 
 
