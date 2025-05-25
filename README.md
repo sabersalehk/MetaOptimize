@@ -2,6 +2,20 @@
 
 MetaOptimize is a framework that can wrap around any first-order optimization algorithm, tuning step sizes on the fly to minimize a specific form of regret that accounts for long-term effect of step sizes on training, through a discounted sum of future losses.
 
+# Citation
+
+This repository contains an implementation of the MetaOptimize of the following paper.
+
+@article{sharifnassab2024metaoptimize,
+  title={Metaoptimize: A framework for optimizing step sizes and other meta-parameters},
+  author={Sharifnassab, Arsalan and Salehkaleybar, Saber and Sutton, Richard},
+  journal={International Conference on Machine Learning (ICML)},
+  url={https://arxiv.org/pdf/2402.02342},
+  year={2025}
+}
+
+
+
 # Usage
 
 Three folders contain codes for the experiments on CIFAR10, ImageNet, and TinyStories datasets. The main file to run the code is main.py in each folder. As an example, to run a (base, meta) = (AdamW, Lion) combination, the following command can be used:
