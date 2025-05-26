@@ -16,7 +16,20 @@ This repository contains an implementation of the MetaOptimize in the following 
 }
 ```
 
-# Usage
+# Install 
+
+pip3 install git+https://github.com/sabersalehk/MetaOptimize.git 
+
+
+# Codes for Experiments in the Paper
+
+The code for the experiments in the paper is available in the `code` folder.
+
+- Experiments on **supervised learning tasks** (CIFAR-10, ImageNet, and TinyStories) are provided in the `Supervised_task.zip` file.
+- Experiments on **continual learning** (CIFAR-100) are available in the `Continual_CIFAR100_experiments.zip` file.
+
+
+## About Experiments on Supervised Learning Tasks
 
 Three folders contain codes for the experiments on CIFAR10, ImageNet, and TinyStories datasets. The main file to run the code is main.py in each folder. As an example, to run a (base, meta) = (AdamW, Lion) combination, the following command can be used:
 
