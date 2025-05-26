@@ -20,6 +20,75 @@ This repository contains an implementation of the MetaOptimize in the following 
 
 pip3 install git+https://github.com/sabersalehk/MetaOptimize.git 
 
+## Example: Train an MLP on MNIST with MetaOptimize
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
+from meta_optimize.optimizer import MetaOptimize_AdamW_Lion_hg
+
+# Define MLP (Net_2layer_M1)
+class MLP(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.fc1 = nn.Linear(28 * 28, 50)
+        self.fc2 = nn.Linear(50, 10)
+
+    def forward(self, x):
+        x = x.view(-1, 28 * 28)
+        x = F.relu(self.fc1(x))
+        return self.fc2(x)
+
+# Load MNIST
+def get_dataloaders(batch_size=64):
+    transform = transforms.ToTensor()
+    train = datasets.MNIST('./data', train=True, download=True, transform=transform)
+    test = datasets.MNIST('./data', train=False, download=True, transform=transform)
+    return DataLoader(train, batch_size=batch_size, shuffle=True), DataLoader(test, batch_size=batch_size)
+
+# Setup
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+trainloader, testloader = get_dataloaders()
+model = MLP().to(device)
+criterion = nn.CrossEntropyLoss()
+
+optimizer = MetaOptimize_AdamW_Lion_hg(
+    model.parameters(),
+    meta_stepsize=1e-3,
+    alpha0=1e-4,
+    stepsize_blocks='scalar',
+    gamma=1.0,
+    b1=0.9,
+    b2=0.999,
+    meta_b1=0.99,
+    meta_c1=0.9,
+    weight_decay=0.1
+)
+
+# Training loop
+for epoch in range(5):
+    model.train()
+    total_loss, correct, total = 0.0, 0, 0
+
+    for inputs, labels in trainloader:
+        inputs, labels = inputs.to(device), labels.to(device)
+        optimizer.zero_grad()
+        outputs = model(inputs)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item() * inputs.size(0)
+        correct += outputs.argmax(1).eq(labels).sum().item()
+        total += labels.size(0)
+
+    acc = 100. * correct / total
+    print(f"Epoch {epoch+1}: Loss={total_loss / total:.4f}, Acc={acc:.2f}%")
+
+
 
 # Codes for Experiments in the Paper
 
