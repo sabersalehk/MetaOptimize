@@ -87,6 +87,7 @@ for epoch in range(5):
 
     acc = 100. * correct / total
     print(f"Epoch {epoch+1}: Loss={total_loss / total:.4f}, Acc={acc:.2f}%")
+```
 
 
 
