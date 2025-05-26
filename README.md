@@ -18,7 +18,7 @@ This repository contains an implementation of the MetaOptimize in the following 
 
 # Install 
 
-pip3 install git+https://github.com/sabersalehk/MetaOptimize.git 
+pip install git+https://github.com/sabersalehk/MetaOptimize.git 
 
 ## Example: Train an MLP on MNIST with MetaOptimize
 
